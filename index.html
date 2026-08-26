@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Collin [Last] — Random Matrix Theory &amp; Machine Learning</title>
+<meta name="description" content="Collin [Last]. PhD in mathematics (UC San Diego): random matrix theory, high-dimensional statistics, and the theory of machine learning." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#14181d;
+    --body:#2c3138;
+    --soft:#666d76;
+    --faint:#9aa1a9;
+    --rule:#e2e5e9;
+    --hair:#f0f2f4;
+    --accent:#8a2b2b;
+    --serif:"IBM Plex Serif",Georgia,serif;
+    --sans:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --measure:44rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.62;
+    color:var(--body);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    padding:4rem 1.5rem 5rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{max-width:var(--measure);margin:0 auto}
+
+  a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;
+    padding-bottom:1.4rem;border-bottom:1px solid var(--ink);
+  }
+  h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:2rem;line-height:1.15;color:var(--ink);
+    letter-spacing:-.015em;margin-bottom:.35rem;
+  }
+  .tagline{font-size:1rem;color:var(--soft);max-width:30rem;text-wrap:balance}
+  .tagline strong{color:var(--ink);font-weight:500}
+
+  .headshot{
+    width:7rem;height:8.75rem;object-fit:cover;display:block;
+    border:1px solid var(--rule);
+  }
+
+  .contact{
+    display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;
+    font-family:var(--mono);font-size:.8rem;
+    padding:.9rem 0 0;
+  }
+  .contact a{border-bottom:1px solid var(--rule);color:var(--soft)}
+  .contact a:hover{color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  section{padding:2.4rem 0;border-bottom:1px solid var(--hair)}
+  section:last-of-type{border-bottom:none}
+  h2{
+    font-family:var(--serif);font-weight:600;font-size:1.05rem;
+    color:var(--ink);margin-bottom:1rem;letter-spacing:-.005em;
+  }
+  p+p{margin-top:.85rem}
+  .lead{font-size:1.02rem;color:var(--body)}
+  .note{font-size:.9rem;color:var(--soft)}
+
+  /* ---------- figures (drop your plots here) ---------- */
+  .plots{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;
+    margin:.4rem 0 1.1rem;
+  }
+  .plot{margin:0}
+  .plot img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .plot-slot{
+    aspect-ratio:4/3;border:1px dashed var(--rule);background:#fcfcfd;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:.72rem;color:var(--faint);text-align:center;
+    padding:1rem;line-height:1.6;
+  }
+  figcaption{
+    font-family:var(--mono);font-size:.72rem;color:var(--soft);
+    line-height:1.55;margin-top:.5rem;
+  }
+  figcaption b{color:var(--ink);font-weight:500}
+
+  /* ---------- research bullets ---------- */
+  ul.thin{list-style:none;margin-top:.9rem}
+  ul.thin li{
+    position:relative;padding-left:1.1rem;margin-bottom:.5rem;
+    font-size:.95rem;
+  }
+  ul.thin li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:5px;height:1px;background:var(--accent);
+  }
+  ul.thin b{color:var(--ink);font-weight:600}
+
+  /* ---------- publications ---------- */
+  ol.pubs{list-style:none;counter-reset:p}
+  ol.pubs li{position:relative;padding-left:2rem;margin-bottom:1.2rem}
+  ol.pubs li:last-child{margin-bottom:0}
+  ol.pubs li::before{
+    counter-increment:p;content:"[" counter(p) "]";
+    position:absolute;left:0;top:.05rem;
+    font-family:var(--mono);font-size:.78rem;color:var(--faint);
+  }
+  .pub-title{font-weight:600;color:var(--ink);line-height:1.4}
+  .pub-title a{border-bottom:none}
+  .pub-title a:hover{color:var(--accent)}
+  .pub-authors{font-size:.9rem;color:var(--soft);margin-top:.1rem}
+  .pub-authors b{color:var(--ink);font-weight:600}
+  .pub-venue{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--soft)}
+  .pub-links{font-family:var(--mono);font-size:.75rem;margin-top:.3rem}
+  .pub-links a{color:var(--accent);border-bottom:1px solid rgba(138,43,43,.25);margin-right:.9rem}
+
+  /* ---------- experience ---------- */
+  .row{
+    display:grid;grid-template-columns:7.5rem 1fr;gap:1.5rem;
+    padding:.9rem 0;border-top:1px solid var(--hair);
+  }
+  .row:first-of-type{border-top:none;padding-top:0}
+  .when{font-family:var(--mono);font-size:.78rem;color:var(--faint);padding-top:.25rem}
+  .what h3{
+    font-size:.98rem;font-weight:600;color:var(--ink);line-height:1.4;
+  }
+  .where{font-size:.9rem;color:var(--soft)}
+  .what p{font-size:.9rem;color:var(--soft);margin-top:.3rem}
+
+  /* ---------- toolkit ---------- */
+  .tools{display:grid;grid-template-columns:7.5rem 1fr;gap:1.5rem;row-gap:.6rem;font-size:.92rem}
+  .tools dt{font-family:var(--mono);font-size:.78rem;color:var(--faint);padding-top:.2rem}
+  .tools dd{color:var(--body)}
+
+  footer{
+    padding-top:1.5rem;margin-top:1rem;border-top:1px solid var(--rule);
+    font-family:var(--mono);font-size:.72rem;color:var(--faint);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+  }
+
+  @media (max-width:640px){
+    body{padding:2.5rem 1.2rem 4rem}
+    .masthead{grid-template-columns:1fr;gap:1.2rem}
+    .headshot{width:5.5rem;height:6.9rem}
+    h1{font-size:1.7rem}
+    .plots{grid-template-columns:1fr}
+    .row,.tools{grid-template-columns:1fr;gap:.2rem}
+    .when{padding-top:0}
+  }
+  @media print{
+    body{padding:0;font-size:11pt}
+    a{border-bottom:none}
+    section{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ MASTHEAD ============ -->
+  <div class="masthead">
+    <div>
+      <h1>Collin [Last]</h1>
+      <p class="tagline">
+        <strong>PhD, Mathematics — UC San Diego.</strong> Random matrix theory and
+        high-dimensional statistics, applied to the theory of machine learning.
+        Currently a data scientist at [Company].
+      </p>
+    </div>
+    <!-- Swap for: <img class="headshot" src="photo.jpg" alt="Collin [Last]" /> -->
+    <div class="headshot plot-slot" style="aspect-ratio:auto">photo.jpg</div>
+  </div>
+
+  <div class="contact">
+    <a href="mailto:you@example.com">you@example.com</a>
+    <a href="cv.pdf">CV (pdf)</a>
+    <a href="https://scholar.google.com/citations?user=XXXX">Google Scholar</a>
+    <a href="https://github.com/yourusername">GitHub</a>
+    <a href="https://arxiv.org/a/lastname_c_1">arXiv</a>
+    <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+  </div>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section>
+    <p class="lead">
+      My thesis developed exact asymptotics for the spectra of neural tangent and conjugate
+      kernels: deterministic equivalents, Stieltjes transform methods, and the phase behavior
+      that governs when a model can recover signal from noise. The practical payoff is that
+      generalization error becomes a computable function of the spectrum rather than something
+      you can only measure after the fact.
+    </p>
+    <p>
+      I now build production machine learning systems at [Company], where the same instincts
+      apply under less forgiving constraints — auditability, determinism, and the requirement
+      that a model's failure modes be known in advance rather than discovered in review.
+      I am interested in quantitative research and ML research roles where high-dimensional
+      statistics is load-bearing rather than decorative.
+    </p>
+  </section>
+
+  <!-- ============ RESEARCH + PLOTS ============ -->
+  <section>
+    <h2>Research</h2>
+    <p>
+      Let a kernel matrix be built from a network with <em>p</em> parameters and <em>n</em>
+      samples, and let both grow with their ratio fixed. The empirical eigenvalue distribution
+      converges to a deterministic law, and once that law is known, training and test risk,
+      the effect of ridge regularization, and the value of additional data all follow from it.
+      The interesting behavior sits at the spectral edge: signal appears as eigenvalues that
+      detach from the bulk, but only past a threshold, below which the signal is invisible
+      regardless of sample size.
+    </p>
+
+    <!-- ============================================================
+         RESEARCH PLOTS — replace each .plot-slot div with:
+         <img src="plots/your-figure.png" alt="..." />
+         Export at ~1200px wide, 2x for retina. PNG or SVG both fine.
+         Add or remove <figure> blocks freely; the grid reflows.
+         ============================================================ -->
+    <div class="plots">
+      <figure class="plot">
+        <div class="plot-slot">plots/spectrum.png<br/>— empirical spectrum vs.<br/>Marchenko–Pastur —</div>
+        <figcaption><b>Figure 1.</b> [Caption. Say what the reader should notice, not what the axes are.]</figcaption>
+      </figure>
+      <figure class="plot">
+        <div class="plot-slot">plots/scaling.png<br/>— risk curves /<br/>scaling law phase diagram —</div>
+        <figcaption><b>Figure 2.</b> [Caption.]</figcaption>
+      </figure>
+    </div>
+
+    <ul class="thin">
+      <li><b>Deterministic equivalents.</b> Hamilton–Jacobi characterizations of the resolvent, and GCV-based risk estimation in the proportional regime.</li>
+      <li><b>Scaling laws.</b> Finite-width corrections to NTK scaling under dual power-law covariance; where the predicted exponents break.</li>
+      <li><b>Spiked models.</b> BBP transitions and signal detectability for kernels that are neither Gaussian nor infinitely wide.</li>
+    </ul>
+  </section>
+
+  <!-- ============ PAPERS ============ -->
+  <section>
+    <h2>Papers</h2>
+    <ol class="pubs">
+      <li>
+        <div class="pub-title"><a href="#">Finite-width NTK scaling laws under dual power-law covariance</a></div>
+        <div class="pub-authors"><b>C. [Last]</b>, [Coauthor], [Advisor]</div>
+        <div class="pub-venue">Under review, 2025</div>
+        <div class="pub-links"><a href="#">arXiv</a><a href="#">pdf</a><a href="#">code</a></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="#">[Second paper title]</a></div>
+        <div class="pub-authors"><b>C. [Last]</b>, [Coauthor]</div>
+        <div class="pub-venue">[Venue], 2024</div>
+        <div class="pub-links"><a href="#">arXiv</a><a href="#">pdf</a></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="#">Random Matrix Theory for Linearized Neural Networks</a></div>
+        <div class="pub-authors"><b>C. [Last]</b></div>
+        <div class="pub-venue">PhD thesis, UC San Diego, 2025</div>
+        <div class="pub-links"><a href="#">pdf</a><a href="#">slides</a></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section>
+    <h2>Experience</h2>
+    <div class="row">
+      <div class="when">2025 —</div>
+      <div class="what">
+        <h3>Data Scientist</h3>
+        <div class="where">[Company]</div>
+        <p>[One line on scope. Then one line with a number in it — throughput, error rate, review time. Recruiters read the number.]</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when">Summer 2024</div>
+      <div class="what">
+        <h3>[Quantitative Research Intern]</h3>
+        <div class="where">[Firm]</div>
+        <p>[What you built, and what it changed.]</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when">2020 – 2025</div>
+      <div class="what">
+        <h3>Graduate Researcher &amp; Teaching Assistant</h3>
+        <div class="where">Department of Mathematics, UC San Diego</div>
+        <p>Advised by [Advisor]. TA for probability, linear algebra, real analysis, and a graduate data-analytics course covering causal inference.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CODE ============ -->
+  <section>
+    <h2>Code</h2>
+    <div class="row">
+      <div class="when">python</div>
+      <div class="what">
+        <h3><a href="#">deterministic-equivalents</a></h3>
+        <p>Hamilton–Jacobi PDE solvers for kernel deterministic equivalents, with GCV risk estimation. PyTorch, NumPy.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when">python</div>
+      <div class="what">
+        <h3><a href="#">spectra</a></h3>
+        <p>Tracks the SVD of network weights through training; Marchenko–Pastur fitting and outlier detection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <section>
+    <h2>Toolkit</h2>
+    <dl class="tools">
+      <dt>languages</dt>
+      <dd>Python, R, SQL, C++, LaTeX</dd>
+      <dt>ml</dt>
+      <dd>PyTorch, JAX, scikit-learn, NumPy / SciPy, pandas</dd>
+      <dt>infra</dt>
+      <dd>GCP (BigQuery, GCS), Git, Docker</dd>
+      <dt>theory</dt>
+      <dd>Random matrix theory, high-dimensional probability, free probability, convex optimization, stochastic calculus</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Collin [Last]</span>
+    <span>Updated July 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
