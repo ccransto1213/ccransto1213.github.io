@@ -55,7 +55,7 @@
 
   /* make the headshot responsive and avoid inline fixed sizes */
   .headshot{
-    width:9rem; /* visual size on desktop */
+    width:11rem; /* visual size on desktop */
     aspect-ratio:4/5; /* keeps a tall portrait box */
     object-fit:cover;display:block;
     border:1px solid var(--rule);
@@ -197,18 +197,12 @@
   <!-- ============ OVERVIEW ============ -->
   <section>
     <p class="lead">
-      My thesis developed exact asymptotics for the spectra of neural tangent and conjugate
-      kernels: deterministic equivalents, Stieltjes transform methods, and the phase behavior
-      that governs when a model can recover signal from noise. The practical payoff is that
-      generalization error becomes a computable function of the spectrum rather than something
-      you can only measure after the fact.
+      My research is in the theory of deep learning, with a primary focus on applying tools from Random Matrix Theory and high dimensional
+      probability to better understand the behavior of neural networks and kernel models. I defended my PhD thesis in Mathematics with a speciliaztion in Statistics at UC San Diego in June 2026, under the supervision of Professor Todd Kemp. My thesis led to two papers, one of which was published at the Conference of Learning Theory (COLT) 2026,
+      and the other is currently under review. My research has been supported by the National Science Foundation (NSF).
     </p>
     <p>
-      I now build production machine learning systems at [Company], where the same instincts
-      apply under less forgiving constraints — auditability, determinism, and the requirement
-      that a model's failure modes be known in advance rather than discovered in review.
-      I am interested in quantitative research and ML research roles where high-dimensional
-      statistics is load-bearing rather than decorative.
+      
     </p>
   </section>
 
@@ -216,13 +210,11 @@
   <section>
     <h2>Research</h2>
     <p>
-      Let a kernel matrix be built from a network with <em>p</em> parameters and <em>n</em>
-      samples, and let both grow with their ratio fixed. The empirical eigenvalue distribution
-      converges to a deterministic law, and once that law is known, training and test risk,
-      the effect of ridge regularization, and the value of additional data all follow from it.
-      The interesting behavior sits at the spectral edge: signal appears as eigenvalues that
-      detach from the bulk, but only past a threshold, below which the signal is invisible
-      regardless of sample size.
+      Understanding the generalization behavior of over-parameterized neural networks remains an active an open area of research
+      in deep learning theory. An especially productive line of work proceed by \emph{linearizing} the network around its random initialization,
+      leading to the Neural Tangent Kernel (NTK) model. My research focused on theoretical predictions of performance of NTK regression under
+      general data assumptions, and the development of a new framework to analyze the asymptotic spectral behavior of the NTK under a nonlinearly
+      seperable dataset. The following are two plots taken from ``NTK Regression under dual power-law model: Deterministic Equivalents via SDE and PDE Methods'' (under review, 2026), which illustrate the theoretical predictions for the risk of NTK regression under a dual power-law covariance model.
     </p>
 
     <!-- ============================================================
@@ -243,9 +235,10 @@
     </div>
 
     <ul class="thin">
-      <li><b>Deterministic equivalents.</b> Hamilton–Jacobi characterizations of the resolvent, and GCV-based risk estimation in the proportional regime.</li>
-      <li><b>Scaling laws.</b> Finite-width corrections to NTK scaling under dual power-law covariance; where the predicted exponents break.</li>
-      <li><b>Spiked models.</b> BBP transitions and signal detectability for kernels that are neither Gaussian nor infinitely wide.</li>
+      My research can be summarized in three main contributions:
+      <li><b>Deterministic equivalents.</b> Derivation of deterministic equivalents for the prediction risk of NTK regression under dual power-law model, in which both the training data and label signal exhibit power-law decay.</li>
+      <li><b>Scaling laws.</b> Novel scaling law for the finite-width NTK --  helping bridge the gap between theoretical understanding and the empirical \emph{neural scaling laws} observed in Kaplan et al. (2020) and Hoffman et al. (2022).</li>
+      <li><b>Spiked models.</b> BBP phase transitions and signal detection for kernels related to neural networks under nonlinearly seperable datasets</li>
     </ul>
   </section>
 
